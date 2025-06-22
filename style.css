@@ -646,11 +646,15 @@ section {
 .pricing-card {
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius);
-  padding: 2.5rem;
-  transition: all 0.3s ease;
+  padding: 1.5rem 1.25rem;
+  transition: transform 0.3s ease;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 460px;
 }
+
 
 .pricing-card.featured {
   border: 2px solid var(--primary);
