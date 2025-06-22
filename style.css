@@ -638,7 +638,7 @@ section {
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, -1, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -1256,6 +1256,17 @@ footer {
   .chatbot-container {
     width: 90%;
     right: 5%;
+  }
+}
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
   }
 }
 
