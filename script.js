@@ -54,15 +54,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
+      // Scroll to the element
       targetElement.scrollIntoView({
         behavior: 'smooth'
       });
       
-      // Update URL without jumping
-      if (history.pushState) {
-        history.pushState(null, null, targetId);
-      } else {
-        location.hash = targetId;
+      // Update URL without adding hash
+      if (history.replaceState) {
+        history.replaceState(null, null, ' ');
       }
     }
   });
