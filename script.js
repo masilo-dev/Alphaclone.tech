@@ -1,12 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mainNav = document.getElementById('main-nav');
+  // Select the mobile menu button and navigation using the same selectors
+  // that exist in index.html. The original code used element IDs that
+  // weren't present which prevented the mobile navigation from toggling.
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const mainNav = document.querySelector('nav ul');
   
   if (mobileMenuBtn && mainNav) {
     mobileMenuBtn.addEventListener('click', () => {
       mainNav.classList.toggle('active');
-      mobileMenuBtn.textContent = mainNav.classList.contains('active') ? '✕' : '☰';
+
+      const isOpen = mainNav.classList.contains('active');
+      mobileMenuBtn.textContent = isOpen ? '✕' : '☰';
+      // Keep the button label accessible for screen readers.
+      mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Close main menu' : 'Open main menu');
     });
   }
   
@@ -140,7 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('load', animateOnScroll);
   
   // Form submission
-  const contactForm = document.getElementById('contact-form');
+  // Grab the contact form using the class from the markup. The previous
+  // selector looked for an ID that doesn't exist which meant the submit
+  // handler never ran.
+  const contactForm = document.querySelector('.contact-form form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
