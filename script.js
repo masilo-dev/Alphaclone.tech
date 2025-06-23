@@ -59,10 +59,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         behavior: 'smooth'
       });
       
-      // Update URL without adding hash
-      if (history.replaceState) {
-        history.replaceState(null, null, ' ');
-      }
+      // Just don't update the URL at all
     }
   });
 });
