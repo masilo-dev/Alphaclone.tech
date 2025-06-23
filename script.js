@@ -1,68 +1,62 @@
-<script>
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('nav ul');
+// Smooth scrolling with hash removal
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
     
-    menuBtn.addEventListener('click', () => {
-      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isExpanded);
-      navMenu.classList.toggle('show');
-      menuBtn.innerHTML = isExpanded ? '☰' : '✕';
-    });
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
     
-    // Tab functionality
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons and contents
-        tabButtons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
-        });
-        tabContents.forEach(content => {
-          content.classList.remove('active');
-          content.setAttribute('hidden', 'true');
-        });
-        
-        // Add active class to clicked button and corresponding content
-        button.classList.add('active');
-        button.setAttribute('aria-selected', 'true');
-        const tabId = button.getAttribute('data-tab');
-        const tabContent = document.getElementById(tabId);
-        tabContent.classList.add('active');
-        tabContent.removeAttribute('hidden');
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      // Scroll to the element
+      targetElement.scrollIntoView({
+        behavior: 'smooth'
       });
-    });
+      
+      // Remove hash from URL
+      removeHashFromURL();
+    }
+  });
+});
+
+// Handle initial page load with hash
+window.addEventListener('load', function() {
+  if (window.location.hash) {
+    const targetElement = document.querySelector(window.location.hash);
+    if (targetElement) {
+      // Scroll to the element
+      setTimeout(() => {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }, 100); // Small delay to ensure page is fully loaded
+    }
     
-    // Form submission
-    const contactForm = document.getElementById('clone-form');
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Here you would typically send the form data to your server
-      alert('Thank you for your interest! We will contact you shortly.');
-      contactForm.reset();
-    });
-    
-    // Smooth scrolling for anchor links without hash in URL
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          // Scroll to the element
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-          
-          // Clear the hash from the URL
-          history.replaceState(null, null, ' ');
-        }
+    // Remove hash from URL
+    removeHashFromURL();
+  }
+});
+
+// Handle browser history navigation (back/forward buttons)
+window.addEventListener('popstate', function(e) {
+  if (window.location.hash) {
+    const targetElement = document.querySelector(window.location.hash);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth'
       });
-    });
-</script>
+    }
+    removeHashFromURL();
+  }
+});
+
+// Helper function to remove hash from URL
+function removeHashFromURL() {
+  if (history.pushState) {
+    // Try to remove hash without page reload
+    history.pushState(null, null, ' ');
+  } else {
+    // Fallback for older browsers
+    location.hash = '';
+  }
+}
