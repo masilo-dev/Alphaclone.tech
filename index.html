@@ -633,6 +633,97 @@
       color: var(--gray-light);
     }
     
+    /* Chatbot Widget Styles */
+    .chatbot-widget {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 350px;
+      max-width: 90%;
+      background: var(--darker);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      z-index: 1000;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .chatbot-header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      font-weight: 600;
+    }
+  
+    .chatbot-messages {
+      height: 300px;
+      overflow-y: auto;
+      padding: 1rem;
+      background: var(--dark);
+    }
+  
+    .chatbot-input-area {
+      display: flex;
+      padding: 0.5rem;
+      background: var(--darker);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  
+    .chatbot-input-area input {
+      flex: 1;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+  
+    .chatbot-input-area button {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+  
+    .chatbot-toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .chat-message {
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      max-width: 80%;
+    }
+    
+    .user-message {
+      background: var(--primary-light);
+      color: var(--dark);
+      margin-left: auto;
+      border-bottom-right-radius: 0;
+    }
+    
+    .bot-message {
+      background: rgba(255,255,255,0.1);
+      margin-right: auto;
+      border-bottom-left-radius: 0;
+    }
+    
     /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -714,6 +805,11 @@
       .pricing-card.featured:hover,
       .pricing-card.featured:focus-within {
         transform: scale(1) translateY(-5px);
+      }
+      
+      .chatbot-widget {
+        width: 90%;
+        right: 5%;
       }
     }
   </style>
@@ -886,7 +982,7 @@
               <p>EcoGoods implemented AI clones to handle 73% of customer service inquiries, while maintaining a 4.9/5 satisfaction rating.</p>
               <div class="case-stats">
                 <div class="stat-item">
-                  <h4>73%</h4>
+                                   <h4>73%</h4>
                   <p>Of inquiries handled by AI</p>
                 </div>
                 <div class="stat-item">
@@ -894,8 +990,12 @@
                   <p>Customer satisfaction</p>
                 </div>
                 <div class="stat-item">
-                  <h4>35%</h4>
-                  <p>Increase in upsells</p>
+                  <h4>40%</h4>
+                  <p>Upsell conversion rate</p>
+                </div>
+                <div class="stat-item">
+                  <h4>$0.15</h4>
+                  <p>Cost per inquiry (vs $2.50 human)</p>
                 </div>
               </div>
             </div>
@@ -907,15 +1007,19 @@
             <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
             <div class="case-content">
               <h3>Marketing Agency Scaled Client Services</h3>
-              <p>Digital Growth Partners created AI clones for each of their team members, allowing them to handle 3X more client accounts without hiring.</p>
+              <p>GrowthHackers Inc. deployed AI clones for their top consultants, allowing them to handle 3X more clients without sacrificing quality.</p>
               <div class="case-stats">
                 <div class="stat-item">
                   <h4>3X</h4>
-                  <p>More clients served</p>
+                  <p>More clients per consultant</p>
+                </div>
+                <div class="stat-item">
+                  <h4>24/7</h4>
+                  <p>Client support availability</p>
                 </div>
                 <div class="stat-item">
                   <h4>45%</h4>
-                  <p>Faster project turnaround</p>
+                  <p>Reduction in onboarding time</p>
                 </div>
                 <div class="stat-item">
                   <h4>$250k</h4>
@@ -932,7 +1036,7 @@
       <div class="container">
         <div class="section-title">
           <h2 id="pricing-heading">Simple, Transparent Pricing</h2>
-                <p>Choose the plan that fits your needs. No hidden fees, cancel anytime.</p>
+          <p>Choose the plan that fits your needs</p>
         </div>
         
         <div class="pricing-grid">
@@ -954,26 +1058,27 @@
             <h3>Professional</h3>
             <div class="price">$297<span>/month</span></div>
             <ul class="pricing-features">
-              <li>Advanced AI text & voice clone</li>
+              <li>Advanced voice & text clone</li>
               <li>Custom website design</li>
               <li>Up to 2,000 conversations/mo</li>
               <li>Priority support</li>
               <li>Advanced analytics</li>
               <li>Basic workflow automation</li>
+              <li>API access</li>
             </ul>
             <a href="#contact" class="btn btn-primary">Get Started</a>
           </div>
           
           <div class="pricing-card">
             <h3>Enterprise</h3>
-            <div class="price">$997<span>/month</span></div>
+            <div class="price">Custom</div>
             <ul class="pricing-features">
-              <li>Premium AI clone with continuous learning</li>
-              <li>Fully custom website & integrations</li>
+              <li>Multi-voice/text clones</li>
+              <li>Custom development</li>
               <li>Unlimited conversations</li>
               <li>24/7 dedicated support</li>
-              <li>Advanced automation</li>
-              <li>API access</li>
+              <li>Enterprise-grade security</li>
+              <li>Full automation suite</li>
               <li>Team management</li>
             </ul>
             <a href="#contact" class="btn btn-secondary">Contact Sales</a>
@@ -986,45 +1091,45 @@
       <div class="container">
         <div class="section-title">
           <h2 id="testimonials-heading">What Our Clients Say</h2>
-          <p>Hear from professionals who've scaled their businesses with AlphaClone</p>
+          <p>Hear from professionals who've scaled with AlphaClone</p>
         </div>
         
         <div class="testimonial-grid">
           <div class="testimonial-card">
             <div class="testimonial-text">
-              My AI clone handles all initial client consultations so I can focus on delivering results. It's like having a perfect sales assistant that never sleeps.
+              My AI clone handles all initial client consultations so I can focus on delivering premium services. It's like having a virtual business partner that knows exactly how I think and communicate.
             </div>
             <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah J." class="author-avatar" width="48" height="48">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="author-avatar">
               <div class="author-info">
                 <h4>Sarah J.</h4>
-                <p>Business Consultant</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial-card">
-            <div class="testimonial-text">
-              As a solopreneur, AlphaClone has been game-changing. My clone handles customer service while I focus on product development. Revenue is up 40% in 3 months.
-            </div>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar" width="48" height="48">
-              <div class="author-info">
-                <h4>Michael T.</h4>
-                <p>E-commerce Founder</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial-card">
-            <div class="testimonial-text">
-              The voice cloning is so accurate my clients can't tell when they're talking to me or my AI. It's allowed me to scale my coaching practice without burning out.
-            </div>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Dr. Lisa M." class="author-avatar" width="48" height="48">
-              <div class="author-info">
-                <h4>Dr. Lisa M.</h4>
                 <p>Executive Coach</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              As a content creator, I was drowning in DMs and collaboration requests. Now my AI clone qualifies leads and even negotiates rates for me. It's paid for itself 10x over already.
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus T." class="author-avatar">
+              <div class="author-info">
+                <h4>Marcus T.</h4>
+                <p>Fitness Influencer</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              We implemented AlphaClone across our consulting firm and saw immediate results. Our response times improved dramatically, and our consultants can now focus on high-value work instead of repetitive inquiries.
+            </div>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="author-avatar">
+              <div class="author-info">
+                <h4>Priya K.</h4>
+                <p>Consulting Firm Partner</p>
               </div>
             </div>
           </div>
@@ -1036,39 +1141,28 @@
       <div class="container">
         <div class="section-title">
           <h2 id="contact-heading">Get Your AI Clone</h2>
-          <p>Ready to launch your digital twin? Fill out the form and we'll get back to you within 24 hours.</p>
+          <p>Ready to deploy your digital twin? Contact us to get started.</p>
         </div>
         
         <div class="contact-form">
-          <form id="clone-form" aria-labelledby="contact-heading">
+          <form id="contactForm" aria-labelledby="contact-heading">
             <div class="form-group">
               <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" class="form-control" required aria-required="true">
+              <input type="text" id="name" class="form-control" required aria-required="true">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" class="form-control" required aria-required="true">
+              <input type="email" id="email" class="form-control" required aria-required="true">
             </div>
             <div class="form-group">
-              <label for="business">Business/Profession</label>
-              <input type="text" id="business" name="business" class="form-control" required aria-required="true">
+              <label for="business">Business/Use Case</label>
+              <input type="text" id="business" class="form-control" required aria-required="true">
             </div>
             <div class="form-group">
-              <label for="use-case">Primary Use Case</label>
-              <select id="use-case" name="use-case" class="form-control" required aria-required="true">
-                <option value="">Select an option</option>
-                <option value="consulting">Consulting/Coaching</option>
-                <option value="ecommerce">E-commerce</option>
-                <option value="content">Content Creation</option>
-                <option value="agency">Agency Services</option>
-                <option value="other">Other</option>
-              </select>
+              <label for="message">How Can We Help?</label>
+              <textarea id="message" class="form-control" required aria-required="true"></textarea>
             </div>
-            <div class="form-group">
-              <label for="message">What would you like your AI clone to handle for you?</label>
-              <textarea id="message" name="message" class="form-control" required aria-required="true"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Get Started</button>
+            <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
         </div>
       </div>
@@ -1083,10 +1177,11 @@
           <p>AI-powered digital twins that work for you 24/7.</p>
           <div class="social-links">
             <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
-            <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+            <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
           </div>
         </div>
+        
         <div class="footer-col">
           <h3>Product</h3>
           <ul class="footer-links">
@@ -1097,6 +1192,7 @@
             <li><a href="#">Updates</a></li>
           </ul>
         </div>
+        
         <div class="footer-col">
           <h3>Resources</h3>
           <ul class="footer-links">
@@ -1107,6 +1203,7 @@
             <li><a href="#">API Status</a></li>
           </ul>
         </div>
+        
         <div class="footer-col">
           <h3>Company</h3>
           <ul class="footer-links">
@@ -1125,78 +1222,124 @@
     </div>
   </footer>
 
+  <!-- Chatbot Widget -->
+  <div class="chatbot-widget" id="chatbotWidget" style="display: none;" aria-label="AI assistant chat">
+    <div class="chatbot-header">
+      Your AlphaClone Assistant
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="chat-message bot-message">
+        Hi there! I'm an AI assistant here to answer your questions about AlphaClone. How can I help you today?
+      </div>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatInput" placeholder="Type your question..." aria-label="Type your question">
+      <button id="sendChatBtn">Send</button>
+    </div>
+  </div>
+  
+  <button class="chatbot-toggle-btn" id="chatbotToggle" aria-label="Open chat with AI assistant">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    AI Assistant
+  </button>
+
   <script>
     // Mobile menu toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navMenu = document.querySelector('nav ul');
     
-    menuBtn.addEventListener('click', () => {
-      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isExpanded);
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
       navMenu.classList.toggle('show');
-      menuBtn.innerHTML = isExpanded ? '☰' : '✕';
+      mobileMenuBtn.textContent = isExpanded ? '☰' : '✕';
     });
     
     // Tab functionality
-    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
     
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        // Remove active class from all buttons and contents
-        tabButtons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        
+        // Update tab buttons
+        tabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
         });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        
+        // Update tab contents
         tabContents.forEach(content => {
           content.classList.remove('active');
           content.setAttribute('hidden', 'true');
         });
-        
-        // Add active class to clicked button and corresponding content
-        button.classList.add('active');
-        button.setAttribute('aria-selected', 'true');
-        const tabId = button.getAttribute('data-tab');
-        const tabContent = document.getElementById(tabId);
-        tabContent.classList.add('active');
-        tabContent.removeAttribute('hidden');
+        document.getElementById(tabId).classList.add('active');
+        document.getElementById(tabId).removeAttribute('hidden');
       });
+    });
+    
+    // Chatbot toggle
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    
+    chatbotToggle.addEventListener('click', () => {
+      const isVisible = chatbotWidget.style.display === 'block';
+      chatbotWidget.style.display = isVisible ? 'none' : 'block';
+      chatbotToggle.setAttribute('aria-label', isVisible ? 'Open chat with AI assistant' : 'Close chat');
+    });
+    
+    // Simple chatbot functionality
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const sendChatBtn = document.getElementById('sendChatBtn');
+    
+    function addMessage(text, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('chat-message');
+      messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+      messageDiv.textContent = text;
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    function handleUserMessage() {
+      const message = chatInput.value.trim();
+      if (message) {
+        addMessage(message, true);
+        chatInput.value = '';
+        
+        // Simple bot responses
+        setTimeout(() => {
+          const responses = [
+            "Great question! AlphaClone can create digital versions of you that handle inquiries 24/7.",
+            "Our AI clones are trained on your voice, writing style, and knowledge to respond just like you would.",
+            "Pricing starts at $97/month for basic text clones. Would you like details on our plans?",
+            "The setup process takes about 2 weeks after we collect your training materials.",
+            "Yes! We offer a 14-day money-back guarantee if you're not satisfied."
+          ];
+          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          addMessage(randomResponse);
+        }, 800);
+      }
+    }
+    
+    sendChatBtn.addEventListener('click', handleUserMessage);
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleUserMessage();
+      }
     });
     
     // Form submission
-    const contactForm = document.getElementById('clone-form');
+    const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      // Here you would typically send the form data to your server
-      alert('Thank you for your interest! We will contact you shortly.');
+      alert('Thank you for your message! Our team will get back to you shortly.');
       contactForm.reset();
     });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-          
-          // Update URL without jumping
-          if (history.pushState) {
-            history.pushState(null, null, targetId);
-          } else {
-            location.hash = targetId;
-          }
-        }
-      });
-    });
   </script>
-   <!-- Tidio Live Chat -->
-<script src="//code.tidio.co/ke4gb7qpm9ceqeewjemzgphj25k598io.js" async></script>
 </body>
 </html>
