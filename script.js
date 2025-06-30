@@ -38,15 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const chatbotSendBtn = document.querySelector('.chatbot-send');
   const chatbotMessages = document.querySelector('.chatbot-messages');
 
-  // Sample bot responses
-  const botResponses = [
-    "Thanks for your message! How can I help you today?",
-    "I'm here to assist you with any questions.",
-    "That's a great question! Let me check that for you.",
-    "Our support team can help with that. Would you like me to connect you?",
-    "I've noted your question and will get back to you soon."
-  ];
-
   // Open/close chatbot
   openChatbotBtn.addEventListener('click', function() {
     chatbotWidget.style.display = 'flex';
@@ -61,27 +52,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Send message function
   function sendMessage() {
-    const message = chatbotInput.value.trim();
-    if (message === '') return;
+    const userMessage = chatbotInput.value.trim();
+    if (userMessage === '') return;
 
-    // Add user message
-    addMessage(message, 'user');
+    // Display user message in chat window
+    const userMessageElement = document.createElement('div');
+    userMessageElement.className = 'message user-message';
+    userMessageElement.innerText = userMessage;
+    chatbotMessages.appendChild(userMessageElement);
+
+    // Clear input field
     chatbotInput.value = '';
 
-    // Simulate bot typing
-    setTimeout(() => {
-      const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
-      addMessage(randomResponse, 'bot');
-    }, 1000);
-  }
-
-  // Add message to chat
-  function addMessage(text, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', `${sender}-message`);
-    messageDiv.textContent = text;
-    chatbotMessages.appendChild(messageDiv);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    // Send message to your backend (Render URL)
+    fetch('https://alphaclone-chatbot.onrender.com/api/chatbot', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: userMessage })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Display bot reply
+        const botMessageElement = document.createElement('div');
+        botMessageElement.className = 'message bot-message';
+        botMessageElement.innerText = data.reply;
+        chatbotMessages.appendChild(botMessageElement);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        const errorMessageElement = document.createElement('div');
+        errorMessageElement.className = 'message bot-message error';
+        errorMessageElement.innerText = 'Sorry, something went wrong with the chatbot.';
+        chatbotMessages.appendChild(errorMessageElement);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    });
   }
 
   // Send message on button click or Enter key
@@ -95,7 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initial bot greeting
   setTimeout(() => {
     if (chatbotMessages.children.length === 0) {
-      addMessage("Hello! I'm your virtual assistant. How can I help you today?", 'bot');
+      const greetingElement = document.createElement('div');
+      greetingElement.className = 'message bot-message';
+      greetingElement.innerText = "Hello! I'm your virtual assistant. How can I help you today?";
+      chatbotMessages.appendChild(greetingElement);
     }
   }, 1000);
 
