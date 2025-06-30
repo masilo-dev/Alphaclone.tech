@@ -2,7 +2,7 @@
 // Pricing Section Toggle
 // ======================
 document.addEventListener('DOMContentLoaded', function() {
-  // If you have annual/monthly pricing toggle
+  // Pricing toggle functionality remains unchanged
   const pricingToggles = document.querySelectorAll('.pricing-toggle input');
   const pricingPeriods = document.querySelectorAll('.price-period');
   const priceAmounts = document.querySelectorAll('.price-amount');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // ======================
-  // Chatbot Widget
+  // Chatbot Widget - Updated Version
   // ======================
   const chatbotWidget = document.getElementById('chatbot-widget');
   const openChatbotBtn = document.getElementById('open-chatbot');
@@ -55,56 +55,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const userMessage = chatbotInput.value.trim();
     if (userMessage === '') return;
 
-    // Display user message in chat window
+    // Display user message
     const userMessageElement = document.createElement('div');
     userMessageElement.className = 'message user-message';
     userMessageElement.innerText = userMessage;
     chatbotMessages.appendChild(userMessageElement);
 
-    // Clear input field
+    // Clear input
     chatbotInput.value = '';
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-    // Send message to your backend (Render URL)
+    // Call Flask backend
     fetch('https://alphaclone-chatbot.onrender.com/api/chatbot', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message: userMessage })
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: userMessage })
     })
     .then(response => response.json())
     .then(data => {
-        // Display bot reply
-        const botMessageElement = document.createElement('div');
-        botMessageElement.className = 'message bot-message';
-        botMessageElement.innerText = data.reply;
-        chatbotMessages.appendChild(botMessageElement);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      const botMessageElement = document.createElement('div');
+      botMessageElement.className = 'message bot-message';
+      botMessageElement.innerText = data.reply;
+      chatbotMessages.appendChild(botMessageElement);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     })
     .catch(error => {
-        console.error('Error:', error);
-        const errorMessageElement = document.createElement('div');
-        errorMessageElement.className = 'message bot-message error';
-        errorMessageElement.innerText = 'Sorry, something went wrong with the chatbot.';
-        chatbotMessages.appendChild(errorMessageElement);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      console.error('Error:', error);
+      const errorMessageElement = document.createElement('div');
+      errorMessageElement.className = 'message bot-message error';
+      errorMessageElement.innerText = 'Sorry, something went wrong.';
+      chatbotMessages.appendChild(errorMessageElement);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     });
   }
 
-  // Send message on button click or Enter key
+  // Event listeners for sending messages
   chatbotSendBtn.addEventListener('click', sendMessage);
   chatbotInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      sendMessage();
-    }
+    if (e.key === 'Enter') sendMessage();
   });
 
-  // Initial bot greeting
+  // Initial greeting
   setTimeout(() => {
     if (chatbotMessages.children.length === 0) {
       const greetingElement = document.createElement('div');
       greetingElement.className = 'message bot-message';
-      greetingElement.innerText = "Hello! I'm your virtual assistant. How can I help you today?";
+      greetingElement.innerText = "Hello! How can I help you today?";
       chatbotMessages.appendChild(greetingElement);
     }
   }, 1000);
@@ -133,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // ======================
-  // Mobile Menu Toggle (if not already implemented)
+  // Mobile Menu Toggle
   // ======================
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navMenu = document.querySelector('nav ul');
