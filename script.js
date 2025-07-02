@@ -2,7 +2,7 @@
 // Pricing Section Toggle
 // ======================
 document.addEventListener('DOMContentLoaded', function() {
-  // Pricing toggle functionality remains unchanged
+  // Pricing toggle functionality
   const pricingToggles = document.querySelectorAll('.pricing-toggle input');
   const pricingPeriods = document.querySelectorAll('.price-period');
   const priceAmounts = document.querySelectorAll('.price-amount');
@@ -31,81 +31,78 @@ document.addEventListener('DOMContentLoaded', function() {
   // ======================
   // Chatbot Widget - Updated Version
   // ======================
-  const chatbotWidget = document.getElementById('chatbot-widget');
-  const openChatbotBtn = document.getElementById('open-chatbot');
-  const closeChatbotBtn = document.querySelector('.chatbot-close');
-  const chatbotInput = document.querySelector('.chatbot-input');
-  const chatbotSendBtn = document.querySelector('.chatbot-send');
-  const chatbotMessages = document.querySelector('.chatbot-messages');
+  const chatbotWidget = document.getElementById('chatbotWidget');
+  const chatbotToggle = document.getElementById('chatbotToggle');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const sendChatBtn = document.getElementById('sendChatBtn');
 
   // Open/close chatbot
-  openChatbotBtn.addEventListener('click', function() {
-    chatbotWidget.style.display = 'flex';
-    this.style.display = 'none';
-    chatbotInput.focus();
-  });
-
-  closeChatbotBtn.addEventListener('click', function() {
-    chatbotWidget.style.display = 'none';
-    openChatbotBtn.style.display = 'flex';
+  chatbotToggle.addEventListener('click', function() {
+    const isVisible = chatbotWidget.style.display === 'flex';
+    chatbotWidget.style.display = isVisible ? 'none' : 'flex';
+    chatbotToggle.setAttribute('aria-label', isVisible ? 'Open chat with AI assistant' : 'Close chat');
+    if (!isVisible) chatInput.focus();
   });
 
   // Send message function
-  function sendMessage() {
-    const userMessage = chatbotInput.value.trim();
-    if (userMessage === '') return;
-
-    // Display user message
-    const userMessageElement = document.createElement('div');
-    userMessageElement.className = 'message user-message';
-    userMessageElement.innerText = userMessage;
-    chatbotMessages.appendChild(userMessageElement);
-
-    // Clear input
-    chatbotInput.value = '';
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-
-    // Call Flask backend
-    fetch('https://alphaclone-chatbot.onrender.com/api/chatbot', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ message: userMessage })
-    })
-    .then(response => response.json())
-    .then(data => {
-      const botMessageElement = document.createElement('div');
-      botMessageElement.className = 'message bot-message';
-      botMessageElement.innerText = data.reply;
-      chatbotMessages.appendChild(botMessageElement);
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      const errorMessageElement = document.createElement('div');
-      errorMessageElement.className = 'message bot-message error';
-      errorMessageElement.innerText = 'Sorry, something went wrong.';
-      chatbotMessages.appendChild(errorMessageElement);
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    });
+  function addMessage(text, isUser = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('chat-message');
+    messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+    messageDiv.textContent = text;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  // Event listeners for sending messages
-  chatbotSendBtn.addEventListener('click', sendMessage);
-  chatbotInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') sendMessage();
-  });
+  async function sendMessageToBackend(message) {
+    try {
+      const response = await fetch('https://alphaclone-chatbot.onrender.com/api/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message })
+      });
 
-  // Initial greeting
-  setTimeout(() => {
-    if (chatbotMessages.children.length === 0) {
-      const greetingElement = document.createElement('div');
-      greetingElement.className = 'message bot-message';
-      greetingElement.innerText = "Hello! How can I help you today?";
-      chatbotMessages.appendChild(greetingElement);
+      if (!response.ok) {
+        throw new Error('Network error contacting backend');
+      }
+
+      const data = await response.json();
+      return data.reply;
+    } catch (error) {
+      console.error('Fetch error:', error);
+      return "Sorry, I'm having trouble connecting to the server.";
     }
-  }, 1000);
+  }
+
+  async function handleUserMessage() {
+    const userMessage = chatInput.value.trim();
+    if (userMessage) {
+      addMessage(userMessage, true);
+      chatInput.value = '';
+
+      const typingIndicator = document.createElement('div');
+      typingIndicator.className = 'chat-message bot-message';
+      typingIndicator.textContent = 'AlphaClone is typing...';
+      typingIndicator.id = 'typing-indicator';
+      chatMessages.appendChild(typingIndicator);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      const botReply = await sendMessageToBackend(userMessage);
+
+      const indicator = document.getElementById('typing-indicator');
+      if (indicator) chatMessages.removeChild(indicator);
+
+      addMessage(botReply);
+    }
+  }
+
+  sendChatBtn.addEventListener('click', handleUserMessage);
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      handleUserMessage();
+    }
+  });
 
   // ======================
   // Pricing Card Hover Effects
@@ -138,27 +135,70 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (mobileMenuBtn && navMenu) {
     mobileMenuBtn.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
       navMenu.classList.toggle('show');
+      this.textContent = isExpanded ? '☰' : '✕';
     });
   }
-});
 
-// ======================
-// Smooth Scrolling for Anchor Links
-// ======================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 100,
-        behavior: 'smooth'
+  // ======================
+  // Tab Functionality
+  // ======================
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.getAttribute('data-tab');
+      
+      // Update tab buttons
+      tabBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
       });
-    }
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      
+      // Update tab contents
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+        content.setAttribute('hidden', 'true');
+      });
+      document.getElementById(tabId).classList.add('active');
+      document.getElementById(tabId).removeAttribute('hidden');
+    });
+  });
+
+  // ======================
+  // Contact Form Submission
+  // ======================
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message! Our team will get back to you shortly.');
+      contactForm.reset();
+    });
+  }
+
+  // ======================
+  // Smooth Scrolling for Anchor Links
+  // ======================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 });
