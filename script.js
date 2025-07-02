@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
   async function sendMessageToBackend(message) {
     try {
       const response = await fetch('https://alphaclone-chatbot.onrender.com/api/chatbot', {
+
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: message })
