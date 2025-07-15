@@ -1,860 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlphaClone | AI Digital Clones & Automated Websites</title>
-  <meta name="description" content="Deploy your AI clone on a custom website that handles inquiries, bookings, and sales 24/7. Perfect for creators, coaches, and businesses.">
-  <meta name="keywords" content="AI clone, voice cloning, website automation, digital twin, AI assistant, lead generation">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="AlphaClone creates AI-powered digital twins and automated websites for creators, coaches, and businesses, handling inquiries, bookings, and sales 24/7.">
+  <meta name="keywords" content="AI clone, voice cloning, website automation, digital twin, AI assistant, lead generation, business automation">
   <meta name="author" content="AlphaClone">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:; form-action 'self' https://formspree.io; connect-src 'self' https://alphaclone-chatbot.onrender.com https://www.google-analytics.com;">
   <meta property="og:title" content="AlphaClone - Your AI-Powered Digital Twin">
-  <meta property="og:description" content="Launch an AI clone that works for you 24/7 with automated websites and workflows">
+  <meta property="og:description" content="Launch an AI clone that works 24/7 with automated websites and workflows. Perfect for scaling your business.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alphaclone.ai">
   <meta property="og:image" content="https://alphaclone.ai/assets/og-image.jpg">
+  <meta property="og:site_name" content="AlphaClone">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@AlphaCloneAI">
+  <title>AlphaClone | AI Digital Clones & Automated Websites</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💠🤖</text></svg>">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #0d9488; /* Updated teal for better contrast */
-      --primary-dark: #0f766e;
-      --primary-light: #ccfbf1;
-      --dark: #111827;
-      --darker: #0D1321;
-      --light: #f9fafb; /* Brighter light color */
-      --gray: #4b5563; /* Darker gray for better contrast */
-      --gray-light: #9ca3af;
-      --black: #030712;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --radius: 12px;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--dark);
-      color: var(--light);
-      line-height: 1.6;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    
-    /* Skip to content link */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--primary);
-      color: white;
-      padding: 8px;
-      z-index: 100;
-    }
-    
-    .skip-link:focus {
-      top: 0;
-    }
-    
-    /* Focus styles */
-    a:focus,
-    button:focus,
-    input:focus,
-    textarea:focus {
-      outline: 3px solid var(--primary-light);
-      outline-offset: 3px;
-    }
-    
-    /* Header */
-    header {
-      background-color: var(--darker);
-      padding: 1.5rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow);
-    }
-    
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-    }
-    
-    nav ul {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    
-    nav a {
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      font-size: 1rem;
-      padding: 0.5rem;
-      border-radius: 4px;
-    }
-    
-    nav a:hover,
-    nav a:focus {
-      color: var(--primary);
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--light);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 4px;
-    }
-    
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, var(--darker) 0%, var(--black) 100%);
-      padding: 6rem 0;
-      text-align: center;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      background: linear-gradient(to right, var(--primary), #3B82F6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-      color: var(--gray-light);
-    }
-    
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.75rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-    
-    .btn-primary {
-      background-color: var(--primary);
-      color: white;
-    }
-    
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-    
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-    
-    .btn-secondary:hover,
-    .btn-secondary:focus {
-      background-color: rgba(13, 148, 136, 0.1);
-      transform: translateY(-2px);
-    }
-    
-    /* Features */
-    section {
-      padding: 5rem 0;
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .section-title h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--light);
-    }
-    
-    .section-title p {
-      color: var(--gray-light);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .feature-card {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius);
-      padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .feature-card:hover,
-    .feature-card:focus-within {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-    }
-    
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-    
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--light);
-    }
-    
-    .feature-card p {
-      color: var(--gray-light);
-    }
-    
-    /* About Us Meta Boxes */
-    .about-meta-boxes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .meta-box {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius);
-      padding: 2rem;
-      border-left: 4px solid var(--primary);
-    }
-    
-    .meta-box h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--light);
-    }
-    
-    .meta-box p {
-      color: var(--gray-light);
-    }
-    
-    /* Use Cases */
-    .use-cases {
-      background-color: var(--darker);
-    }
-    
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .tab-btn {
-      padding: 0.75rem 1.5rem;
-      background-color: transparent;
-      border: none;
-      border-radius: 50px;
-      color: var(--gray-light);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .tab-btn.active {
-      background-color: var(--primary);
-      color: white;
-    }
-    
-    .tab-btn:hover,
-    .tab-btn:focus {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    
-    .tab-content {
-      display: none;
-    }
-    
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
-    }
-    
-    .case-study {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-    }
-    
-    .case-image {
-      height: 100%;
-      min-height: 400px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-    
-    .case-image::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-    
-    .case-content {
-      padding: 3rem;
-    }
-    
-    .case-content h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      color: var(--light);
-    }
-    
-    .case-content p {
-      margin-bottom: 1.5rem;
-      color: var(--gray-light);
-    }
-    
-    .case-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .stat-item h4 {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .stat-item p {
-      font-size: 0.9rem;
-      color: var(--gray-light);
-    }
-    
-    /* Pricing */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .pricing-card {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-    
-    .pricing-card.featured {
-      border: 2px solid var(--primary);
-      transform: scale(1.05);
-    }
-    
-    .pricing-card:hover,
-    .pricing-card:focus-within {
-      transform: translateY(-5px);
-    }
-    
-    .pricing-card.featured:hover,
-    .pricing-card.featured:focus-within {
-      transform: scale(1.05) translateY(-5px);
-    }
-    
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--light);
-    }
-    
-    .price {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--light);
-    }
-    
-    .price span {
-      font-size: 1rem;
-      color: var(--gray-light);
-    }
-    
-    .price-sm {
-      font-size: 2rem;
-    }
-    
-    .pricing-features {
-      margin-bottom: 2rem;
-      list-style: none;
-    }
-    
-    .pricing-features li {
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--gray-light);
-    }
-    
-    .pricing-features li::before {
-      content: "✓";
-      color: var(--primary);
-    }
-    
-    .featured-badge {
-      position: absolute;
-      top: -12px;
-      right: 20px;
-      background-color: var(--primary);
-      color: white;
-      padding: 0.25rem 1rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.8rem;
-    }
-    
-    /* Testimonials */
-    .testimonials {
-      background-color: var(--darker);
-    }
-    
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .testimonial-card {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius);
-      padding: 2rem;
-    }
-    
-    .testimonial-text {
-      font-style: italic;
-      margin-bottom: 1.5rem;
-      color: var(--light);
-      position: relative;
-      padding-left: 1.5rem;
-    }
-    
-    .testimonial-text::before {
-      content: '"';
-      position: absolute;
-      left: 0;
-      top: -0.5rem;
-      font-size: 2rem;
-      color: var(--primary);
-      line-height: 1;
-    }
-    
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .author-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    
-    .author-info h4 {
-      color: var(--light);
-      margin-bottom: 0.25rem;
-    }
-    
-    .author-info p {
-      color: var(--gray-light);
-      font-size: 0.9rem;
-    }
-    
-    /* Contact */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius);
-      padding: 3rem;
-    }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--light);
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius);
-      background-color: rgba(255, 255, 255, 0.05);
-      color: var(--light);
-      font-family: inherit;
-    }
-    
-    .form-control:focus {
-      border-color: var(--primary);
-    }
-    
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
-    }
-    
-    /* Footer */
-    footer {
-      background-color: var(--black);
-      padding: 4rem 0 2rem;
-    }
-    
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .footer-col h3 {
-      color: var(--light);
-      margin-bottom: 1.5rem;
-      font-size: 1.25rem;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 0.75rem;
-    }
-    
-    .footer-links a {
-      color: var(--gray-light);
-      text-decoration: none;
-      transition: color 0.3s ease;
-      display: inline-block;
-      padding: 0.25rem 0;
-    }
-    
-    .footer-links a:hover,
-    .footer-links a:focus {
-      color: var(--primary);
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .social-links a {
-      color: var(--gray-light);
-      font-size: 1.25rem;
-      transition: color 0.3s ease;
-      display: inline-block;
-      padding: 0.5rem;
-    }
-    
-    .social-links a:hover,
-    .social-links a:focus {
-      color: var(--primary);
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--gray-light);
-    }
-    
-    /* Chatbot Widget Styles */
-    .chatbot-widget {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      width: 350px;
-      max-width: 90%;
-      background: var(--darker);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      z-index: 1000;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .chatbot-header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem;
-      font-weight: 600;
-    }
-  
-    .chatbot-messages {
-      height: 300px;
-      overflow-y: auto;
-      padding: 1rem;
-      background: var(--dark);
-    }
-  
-    .chatbot-input-area {
-      display: flex;
-      padding: 0.5rem;
-      background: var(--darker);
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-  
-    .chatbot-input-area input {
-      flex: 1;
-      padding: 0.5rem;
-      border: none;
-      border-radius: 4px 0 0 4px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-    }
-  
-    .chatbot-input-area button {
-      padding: 0.5rem 1rem;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-    }
-  
-    .chatbot-toggle-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      padding: 0.75rem 1.5rem;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .chat-message {
-      margin-bottom: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius);
-      max-width: 80%;
-    }
-    
-    .user-message {
-      background: var(--primary-light);
-      color: var(--dark);
-      margin-left: auto;
-      border-bottom-right-radius: 0;
-    }
-    
-    .bot-message {
-      background: rgba(255,255,255,0.1);
-      margin-right: auto;
-      border-bottom-left-radius: 0;
-    }
-    
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-start;
-        display: none;
-      }
-      
-      nav ul.show {
-        display: flex;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero p {
-        font-size: 1.1rem;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-      }
-      
-      .case-study {
-        grid-template-columns: 1fr;
-      }
-      
-      .case-image {
-        min-height: 250px;
-      }
-      
-      .case-content {
-        padding: 2rem;
-      }
-      
-      .contact-form {
-        padding: 2rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1rem;
-      }
-      
-      section {
-        padding: 3rem 0;
-      }
-      
-      .hero {
-        padding: 4rem 0;
-      }
-      
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .pricing-card.featured {
-        transform: scale(1);
-      }
-      
-      .pricing-card.featured:hover,
-      .pricing-card.featured:focus-within {
-        transform: scale(1) translateY(-5px);
-      }
-      
-      .chatbot-widget {
-        width: 90%;
-        right: 5%;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AlphaClone",
+    "url": "https://alphaclone.ai",
+    "logo": "https://alphaclone.ai/assets/logo.png",
+    "description": "AlphaClone provides AI-powered digital clones and automated websites for professionals and businesses.",
+    "sameAs": [
+      "https://twitter.com/AlphaCloneAI",
+      "https://linkedin.com/company/alphaclone",
+      "https://instagram.com/alphacloneai"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "url": "https://alphaclone.ai/#contact"
+    }
+  }
+  </script>
 </head>
 <body>
   <!-- Skip to content link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Header -->
   <header>
-    <div class="container header-container">
-      <a href="#" class="logo">
+    <div class="container">
+      <a href="#" class="logo" aria-label="AlphaClone Home">
         <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
         </svg>
         AlphaClone
       </a>
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#use-cases">Use Cases</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#use-cases" class="nav-link">Use Cases</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
-      <button class="mobile-menu-btn" aria-label="Open main menu" aria-expanded="false" aria-controls="main-menu">☰</button>
+      <button class="mobile-menu-btn" aria-label="Open main menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+      <div id="mobile-menu" class="mobile-menu">
+        <a href="#features" class="mobile-nav-link">Features</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#use-cases" class="mobile-nav-link">Use Cases</a>
+        <a href="#pricing" class="mobile-nav-link">Pricing</a>
+        <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+      </div>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
-        <h1>Your Digital Twin, Working 24/7</h1>
+        <h1 id="hero-heading">Your Digital Twin, Working 24/7</h1>
         <p>AlphaClone builds AI-powered versions of you that handle inquiries, sales, and support across websites and messaging platforms.</p>
-        <div class="cta-buttons">
+        <div class="hero-buttons">
           <a href="#contact" class="btn btn-primary">Get Your Clone</a>
-          <a href="#features" class="btn btn-secondary">How It Works</a>
+          <a href="#demo" class="btn btn-secondary">Try Live Demo</a>
         </div>
       </div>
     </section>
 
-    <section id="features" aria-labelledby="features-heading">
+    <!-- Features Section -->
+    <section id="features" class="section" aria-labelledby="features-heading">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h2 id="features-heading">AI Cloning & Automation</h2>
           <p>We build everything you need to scale your presence digitally</p>
         </div>
@@ -884,23 +124,23 @@
       </div>
     </section>
 
-    <section id="about" aria-labelledby="about-heading">
+    <!-- About Section -->
+    <section id="about" class="section" aria-labelledby="about-heading">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h2 id="about-heading">About AlphaClone</h2>
           <p>We're redefining digital presence with AI-powered clones</p>
         </div>
-        
-        <div class="about-meta-boxes">
-          <div class="meta-box">
+        <div class="about-grid">
+          <div class="about-card">
             <h3>Our Mission</h3>
             <p>To empower professionals, creators, and businesses with AI clones that authentically represent them, working 24/7 to handle inquiries, generate leads, and close sales.</p>
           </div>
-          <div class="meta-box">
+          <div class="about-card">
             <h3>The Technology</h3>
             <p>Using cutting-edge voice cloning, natural language processing, and behavioral modeling to create digital twins that learn and adapt to your unique communication style.</p>
           </div>
-          <div class="meta-box">
+          <div class="about-card">
             <h3>Ethical Approach</h3>
             <p>We prioritize transparency and consent in all our cloning services. Your AI clone is fully under your control, with clear disclosure that users are interacting with an AI.</p>
           </div>
@@ -908,123 +148,74 @@
       </div>
     </section>
 
-    <section id="use-cases" class="use-cases" aria-labelledby="use-cases-heading">
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="section section-dark" aria-labelledby="use-cases-heading">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h2 id="use-cases-heading">Proven Use Cases</h2>
           <p>See how different professionals are using AlphaClone to scale their businesses</p>
         </div>
-        
         <div class="tabs" role="tablist" aria-label="Use case categories">
           <button class="tab-btn active" data-tab="consultants" role="tab" aria-selected="true" aria-controls="consultants-tab">Consultants</button>
           <button class="tab-btn" data-tab="creators" role="tab" aria-selected="false" aria-controls="creators-tab">Creators</button>
           <button class="tab-btn" data-tab="ecommerce" role="tab" aria-selected="false" aria-controls="ecommerce-tab">E-commerce</button>
           <button class="tab-btn" data-tab="agencies" role="tab" aria-selected="false" aria-controls="agencies-tab">Agencies</button>
         </div>
-        
         <div class="tab-content active" id="consultants" role="tabpanel" aria-labelledby="consultants-tab" tabindex="0">
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
+          <div class="use-case">
+            <div class="use-case-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" loading="lazy"></div>
+            <div class="use-case-content">
               <h3>Consulting Firm 3X'd Client Onboarding</h3>
               <p>Executive Performance Group deployed AI clones to handle initial consultations and qualification, allowing their human consultants to focus on high-value clients.</p>
-              <div class="case-stats">
-                <div class="stat-item">
-                  <h4>3.2X</h4>
-                  <p>More leads captured</p>
-                </div>
-                <div class="stat-item">
-                  <h4>64%</h4>
-                  <p>Reduced response time</p>
-                </div>
-                <div class="stat-item">
-                  <h4>28%</h4>
-                  <p>Increase in conversions</p>
-                </div>
-                <div class="stat-item">
-                  <h4>24/7</h4>
-                  <p>Availability</p>
-                </div>
+              <div class="stats-grid">
+                <div><h4>3.2X</h4><p>More leads captured</p></div>
+                <div><h4>64%</h4><p>Reduced response time</p></div>
+                <div><h4>28%</h4><p>Increase in conversions</p></div>
+                <div><h4>24/7</h4><p>Availability</p></div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="tab-content" id="creators" role="tabpanel" aria-labelledby="creators-tab" tabindex="0" hidden>
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
+        <div class="tab-content" id="creators" role="tabpanel" aria-labelledby="creators-tab" tabindex="0">
+          <div class="use-case">
+            <div class="use-case-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80');" loading="lazy"></div>
+            <div class="use-case-content">
               <h3>Content Creator Monetized Her DMs</h3>
               <p>Lifestyle influencer Sarah K. automated 87% of her sponsorship inquiries and product recommendations using her AI clone, while maintaining her authentic voice.</p>
-              <div class="case-stats">
-                <div class="stat-item">
-                  <h4>5X</h4>
-                  <p>More sponsorship deals</p>
-                </div>
-                <div class="stat-item">
-                  <h4>92%</h4>
-                  <p>Faster response to fans</p>
-                </div>
-                <div class="stat-item">
-                  <h4>$12k</h4>
-                  <p>Additional monthly revenue</p>
-                </div>
+              <div class="stats-grid">
+                <div><h4>5X</h4><p>More sponsorship deals</p></div>
+                <div><h4>92%</h4><p>Faster response to fans</p></div>
+                <div><h4>$12k</h4><p>Additional monthly revenue</p></div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="tab-content" id="ecommerce" role="tabpanel" aria-labelledby="ecommerce-tab" tabindex="0" hidden>
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
+        <div class="tab-content" id="ecommerce" role="tabpanel" aria-labelledby="ecommerce-tab" tabindex="0">
+          <div class="use-case">
+            <div class="use-case-image" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" loading="lazy"></div>
+            <div class="use-case-content">
               <h3>E-commerce Store Reduced Support Tickets</h3>
               <p>EcoGoods implemented AI clones to handle 73% of customer service inquiries, while maintaining a 4.9/5 satisfaction rating.</p>
-              <div class="case-stats">
-                <div class="stat-item">
-                                   <h4>73%</h4>
-                  <p>Of inquiries handled by AI</p>
-                </div>
-                <div class="stat-item">
-                  <h4>4.9/5</h4>
-                  <p>Customer satisfaction</p>
-                </div>
-                <div class="stat-item">
-                  <h4>40%</h4>
-                  <p>Upsell conversion rate</p>
-                </div>
-                <div class="stat-item">
-                  <h4>$0.15</h4>
-                  <p>Cost per inquiry (vs $2.50 human)</p>
-                </div>
+              <div class="stats-grid">
+                <div><h4>73%</h4><p>Of inquiries handled by AI</p></div>
+                <div><h4>4.9/5</h4><p>Customer satisfaction</p></div>
+                <div><h4>40%</h4><p>Upsell conversion rate</p></div>
+                <div><h4>$0.15</h4><p>Cost per inquiry (vs $2.50 human)</p></div>
               </div>
             </div>
           </div>
         </div>
-        
-        <div class="tab-content" id="agencies" role="tabpanel" aria-labelledby="agencies-tab" tabindex="0" hidden>
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
+        <div class="tab-content" id="agencies" role="tabpanel" aria-labelledby="agencies-tab" tabindex="0">
+          <div class="use-case">
+            <div class="use-case-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" loading="lazy"></div>
+            <div class="use-case-content">
               <h3>Marketing Agency Scaled Client Services</h3>
               <p>GrowthHackers Inc. deployed AI clones for their top consultants, allowing them to handle 3X more clients without sacrificing quality.</p>
-              <div class="case-stats">
-                <div class="stat-item">
-                  <h4>3X</h4>
-                  <p>More clients per consultant</p>
-                </div>
-                <div class="stat-item">
-                  <h4>24/7</h4>
-                  <p>Client support availability</p>
-                </div>
-                <div class="stat-item">
-                  <h4>45%</h4>
-                  <p>Reduction in onboarding time</p>
-                </div>
-                <div class="stat-item">
-                  <h4>$250k</h4>
-                  <p>Additional annual revenue</p>
-                </div>
+              <div class="stats-grid">
+                <div><h4>3X</h4><p>More clients per consultant</p></div>
+                <div><h4>24/7</h4><p>Client support availability</p></div>
+                <div><h4>45%</h4><p>Reduction in onboarding time</p></div>
+                <div><h4>$250k</h4><p>Additional annual revenue</p></div>
               </div>
             </div>
           </div>
@@ -1032,18 +223,18 @@
       </div>
     </section>
 
-    <section id="pricing" aria-labelledby="pricing-heading">
+    <!-- Pricing Section -->
+    <section id="pricing" class="section" aria-labelledby="pricing-heading">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h2 id="pricing-heading">Simple, Transparent Pricing</h2>
           <p>Choose the plan that fits your needs</p>
         </div>
-        
         <div class="pricing-grid">
           <div class="pricing-card">
             <h3>Starter</h3>
             <div class="price">$97<span>/month</span></div>
-            <ul class="pricing-features">
+            <ul>
               <li>Basic AI text clone</li>
               <li>Pre-built website template</li>
               <li>Up to 500 conversations/mo</li>
@@ -1052,12 +243,11 @@
             </ul>
             <a href="#contact" class="btn btn-secondary">Get Started</a>
           </div>
-          
-          <div class="pricing-card featured">
-            <div class="featured-badge">Most Popular</div>
+          <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
             <h3>Professional</h3>
             <div class="price">$297<span>/month</span></div>
-            <ul class="pricing-features">
+            <ul>
               <li>Advanced voice & text clone</li>
               <li>Custom website design</li>
               <li>Up to 2,000 conversations/mo</li>
@@ -1068,11 +258,10 @@
             </ul>
             <a href="#contact" class="btn btn-primary">Get Started</a>
           </div>
-          
           <div class="pricing-card">
             <h3>Enterprise</h3>
             <div class="price">Custom</div>
-            <ul class="pricing-features">
+            <ul>
               <li>Multi-voice/text clones</li>
               <li>Custom development</li>
               <li>Unlimited conversations</li>
@@ -1087,47 +276,39 @@
       </div>
     </section>
 
-    <section id="testimonials" class="testimonials" aria-labelledby="testimonials-heading">
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section section-dark" aria-labelledby="testimonials-heading">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h2 id="testimonials-heading">What Our Clients Say</h2>
           <p>Hear from professionals who've scaled with AlphaClone</p>
         </div>
-        
-        <div class="testimonial-grid">
+        <div class="testimonials-grid">
           <div class="testimonial-card">
-            <div class="testimonial-text">
-              My AI clone handles all initial client consultations so I can focus on delivering premium services. It's like having a virtual business partner that knows exactly how I think and communicate.
-            </div>
+            <div class="testimonial-quote">"My AI clone handles all initial client consultations so I can focus on delivering premium services. It's like having a virtual business partner that knows exactly how I think and communicate."</div>
             <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="author-avatar">
-              <div class="author-info">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J., Executive Coach" loading="lazy">
+              <div>
                 <h4>Sarah J.</h4>
                 <p>Executive Coach</p>
               </div>
             </div>
           </div>
-          
           <div class="testimonial-card">
-            <div class="testimonial-text">
-              As a content creator, I was drowning in DMs and collaboration requests. Now my AI clone qualifies leads and even negotiates rates for me. It's paid for itself 10x over already.
-            </div>
+            <div class="testimonial-quote">"As a content creator, I was drowning in DMs and collaboration requests. Now my AI clone qualifies leads and even negotiates rates for me. It's paid for itself 10x over already."</div>
             <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus T." class="author-avatar">
-              <div class="author-info">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus T., Fitness Influencer" loading="lazy">
+              <div>
                 <h4>Marcus T.</h4>
                 <p>Fitness Influencer</p>
               </div>
             </div>
           </div>
-          
           <div class="testimonial-card">
-            <div class="testimonial-text">
-              We implemented AlphaClone across our consulting firm and saw immediate results. Our response times improved dramatically, and our consultants can now focus on high-value work instead of repetitive inquiries.
-            </div>
+            <div class="testimonial-quote">"We implemented AlphaClone across our consulting firm and saw immediate results. Our response times improved dramatically, and our consultants can now focus on high-value work instead of repetitive inquiries."</div>
             <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K." class="author-avatar">
-              <div class="author-info">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K., Consulting Firm Partner" loading="lazy">
+              <div>
                 <h4>Priya K.</h4>
                 <p>Consulting Firm Partner</p>
               </div>
@@ -1137,54 +318,84 @@
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-heading">
+    <!-- Contact Section -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
       <div class="container">
-        <div class="section-title">
+        <div class="section-header">
           <h2 id="contact-heading">Get Your AI Clone</h2>
           <p>Ready to deploy your digital twin? Contact us to get started.</p>
         </div>
-        
         <div class="contact-form">
-          <form id="contactForm" aria-labelledby="contact-heading">
+          <form action="https://formspree.io/f/mzzvpldl" method="POST" id="contactForm">
             <div class="form-group">
               <label for="name">Full Name</label>
-              <input type="text" id="name" class="form-control" required aria-required="true">
+              <input type="text" name="name" id="name" required aria-required="true">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" class="form-control" required aria-required="true">
+              <input type="email" name="email" id="email" required aria-required="true">
             </div>
             <div class="form-group">
               <label for="business">Business/Use Case</label>
-              <input type="text" id="business" class="form-control" required aria-required="true">
+              <input type="text" name="business" id="business" required aria-required="true">
             </div>
             <div class="form-group">
               <label for="message">How Can We Help?</label>
-              <textarea id="message" class="form-control" required aria-required="true"></textarea>
+              <textarea name="message" id="message" required aria-required="true"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
+        </div>
+        <div class="chatbot-widget hidden" id="chatbotWidget">
+          <div class="chatbot-header">Your AlphaClone Assistant</div>
+          <div class="chatbot-messages" id="chatMessages">
+            <div class="chat-message bot-message">Hi there! I'm an AI assistant here to answer your questions about AlphaClone. How can I help you today?</div>
+          </div>
+          <div class="chatbot-input-area">
+            <input type="text" id="chatInput" placeholder="Type your question..." aria-label="Type your question">
+            <button id="sendChatBtn">Send</button>
+          </div>
+        </div>
+        <button class="chatbot-toggle-btn" id="chatbotToggle" aria-label="Open chat with AI assistant">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          AI Assistant
+        </button>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="section section-dark" aria-labelledby="demo-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="demo-heading">Experience Your AI Clone</h2>
+          <p>Interact with a live demo of our AI clone technology to see how it works for you.</p>
+        </div>
+        <div class="demo-cta">
+          <a href="#contact" class="btn btn-primary">Try Live Demo Now</a>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Sticky CTA -->
+  <a href="#contact" class="sticky-cta btn btn-primary" aria-label="Get Started with AlphaClone">Get Started</a>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col">
+        <div>
           <h3>AlphaClone</h3>
           <p>AI-powered digital twins that work for you 24/7.</p>
           <div class="social-links">
-            <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
-            <a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
-            <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+            <a href="https://twitter.com/AlphaCloneAI" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
+            <a href="https://linkedin.com/company/alphaclone" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+            <a href="https://instagram.com/alphacloneai" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
           </div>
         </div>
-        
-        <div class="footer-col">
+        <div>
           <h3>Product</h3>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#features">Features</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#use-cases">Use Cases</a></li>
@@ -1192,10 +403,9 @@
             <li><a href="#">Updates</a></li>
           </ul>
         </div>
-        
-        <div class="footer-col">
+        <div>
           <h3>Resources</h3>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#">Documentation</a></li>
             <li><a href="#">Guides</a></li>
             <li><a href="#">Blog</a></li>
@@ -1203,10 +413,9 @@
             <li><a href="#">API Status</a></li>
           </ul>
         </div>
-        
-        <div class="footer-col">
+        <div>
           <h3>Company</h3>
-          <ul class="footer-links">
+          <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#">Careers</a></li>
             <li><a href="#">Privacy</a></li>
@@ -1215,155 +424,18 @@
           </ul>
         </div>
       </div>
-      
-      <div class="copyright">
-        <p>&copy; 2023 AlphaClone. All rights reserved.</p>
-      </div>
+      <div class="footer-bottom">© 2025 AlphaClone. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Chatbot Widget -->
-  <div class="chatbot-widget" id="chatbotWidget" style="display: none;" aria-label="AI assistant chat">
-    <div class="chatbot-header">
-      Your AlphaClone Assistant
-    </div>
-    <div class="chatbot-messages" id="chatMessages">
-      <div class="chat-message bot-message">
-        Hi there! I'm an AI assistant here to answer your questions about AlphaClone. How can I help you today?
-      </div>
-    </div>
-    <div class="chatbot-input-area">
-      <input type="text" id="chatInput" placeholder="Type your question..." aria-label="Type your question">
-      <button id="sendChatBtn">Send</button>
-    </div>
-  </div>
-  
-  <button class="chatbot-toggle-btn" id="chatbotToggle" aria-label="Open chat with AI assistant">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-    AI Assistant
-  </button>
-
+  <script src="script.js"></script>
+  <!-- Google Analytics (replace G-XXXXXXXXXX with your tracking ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
-  // AlphaClone Chatbot Script 
-    
-  // Mobile menu toggle
-  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  const navMenu = document.querySelector('nav ul');
-  
-  mobileMenuBtn.addEventListener('click', () => {
-    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
-    navMenu.classList.toggle('show');
-    mobileMenuBtn.textContent = isExpanded ? '☰' : '✕';
-  });
-  
-  // Tab functionality
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tabId = btn.getAttribute('data-tab');
-      
-      // Update tab buttons
-      tabBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      
-      // Update tab contents
-      tabContents.forEach(content => {
-        content.classList.remove('active');
-        content.setAttribute('hidden', 'true');
-      });
-      document.getElementById(tabId).classList.add('active');
-      document.getElementById(tabId).removeAttribute('hidden');
-    });
-  });
-
-  // Chatbot functionality
-  const chatbotToggle = document.getElementById('chatbotToggle');
-  const chatbotWidget = document.getElementById('chatbotWidget');
-  const chatMessages = document.getElementById('chatMessages');
-  const chatInput = document.getElementById('chatInput');
-  const sendChatBtn = document.getElementById('sendChatBtn');
-
-  chatbotToggle.addEventListener('click', () => {
-    const isVisible = chatbotWidget.style.display === 'block';
-    chatbotWidget.style.display = isVisible ? 'none' : 'block';
-    chatbotToggle.setAttribute('aria-label', isVisible ? 'Open chat with AI assistant' : 'Close chat');
-    if (!isVisible) chatInput.focus();
-  });
-
-  function addMessage(text, isUser = false) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('chat-message');
-    messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
-    messageDiv.textContent = text;
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  async function sendMessageToBackend(message) {
-    try {
-      const response = await fetch('https://alphaclone-chatbot.onrender.com/api/chatbot', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: message })
-      });
-
-      if (!response.ok) {
-        throw new Error('Backend error');
-      }
-
-      const data = await response.json();
-      return data.reply;
-    } catch (error) {
-      console.error('Fetch error:', error);
-      return "Sorry, there was an error connecting to AlphaClone backend.";
-    }
-  }
-
-  async function handleUserMessage() {
-    const userMessage = chatInput.value.trim();
-    if (userMessage) {
-      addMessage(userMessage, true);
-      chatInput.value = '';
-
-      const typingIndicator = document.createElement('div');
-      typingIndicator.className = 'chat-message bot-message';
-      typingIndicator.textContent = 'AlphaClone is typing...';
-      typingIndicator.id = 'typing-indicator';
-      chatMessages.appendChild(typingIndicator);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      const botReply = await sendMessageToBackend(userMessage);
-
-      const indicator = document.getElementById('typing-indicator');
-      if (indicator) chatMessages.removeChild(indicator);
-
-      addMessage(botReply);
-    }
-  }
-
-  sendChatBtn.addEventListener('click', handleUserMessage);
-  chatInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      handleUserMessage();
-    }
-  });
-
-  // Form submission
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you for your message! Our team will get back to you shortly.');
-      contactForm.reset();
-    });
-  }
-</script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </body>
 </html>
