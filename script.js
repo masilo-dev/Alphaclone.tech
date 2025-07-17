@@ -1,19 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile Menu Toggle
+  // Mobile menu toggle
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  const navMenu = document.querySelector('nav ul');
-  if (mobileMenuBtn && navMenu) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-      mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
-      navMenu.classList.toggle('show');
-      mobileMenuBtn.textContent = isExpanded ? '☰' : '✕';
-    });
-  }
+  const mobileMenu = document.getElementById('mobile-menu');
 
-  // Tab Functionality
+  mobileMenuBtn.addEventListener('click', () => {
+    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+    mobileMenu.style.display = isExpanded ? 'none' : 'block';
+    mobileMenuBtn.textContent = isExpanded ? '☰' : '✕';
+    mobileMenuBtn.setAttribute('aria-label', isExpanded ? 'Open main menu' : 'Close main menu');
+  });
+
+  // Tab functionality
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
+
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const tabId = btn.getAttribute('data-tab');
@@ -25,45 +26,34 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-selected', 'true');
       tabContents.forEach(content => {
         content.classList.remove('active');
-        content.setAttribute('hidden', 'true');
+        content.style.display = 'none';
       });
       const activeTab = document.getElementById(tabId);
       activeTab.classList.add('active');
-      activeTab.removeAttribute('hidden');
+      activeTab.style.display = 'block';
+      // Track tab click
+      gtag('event', 'tab_click', { 'tab_name': tabId });
     });
   });
 
-  // Pricing Toggle
-  const pricingToggle = document.querySelector('#pricing-period');
-  const priceAmounts = document.querySelectorAll('.price-amount');
-  const pricePeriods = document.querySelectorAll('.price-period');
-  if (pricingToggle) {
-    pricingToggle.addEventListener('change', () => {
-      const isAnnual = pricingToggle.value === 'annual';
-      priceAmounts.forEach((amount, index) => {
-        const monthlyPrice = amount.dataset.monthly;
-        const annualPrice = amount.dataset.annual;
-        amount.textContent = isAnnual ? annualPrice : monthlyPrice;
-        pricePeriods[index].textContent = isAnnual ? '/year' : '/month';
-      });
-    });
-  }
-
-  // Chatbot Functionality
+  // Chatbot functionality
   const chatbotToggle = document.getElementById('chatbotToggle');
   const chatbotWidget = document.getElementById('chatbotWidget');
   const chatMessages = document.getElementById('chatMessages');
   const chatInput = document.getElementById('chatInput');
   const sendChatBtn = document.getElementById('sendChatBtn');
 
-  if (chatbotToggle && chatbotWidget) {
-    chatbotToggle.addEventListener('click', () => {
-      const isVisible = chatbotWidget.style.display === 'flex';
-      chatbotWidget.style.display = isVisible ? 'none' : 'flex';
-      chatbotToggle.setAttribute('aria-label', isVisible ? 'Open chat with AI assistant' : 'Close chat');
-      if (!isVisible) chatInput.focus();
-    });
-  }
+  chatbotToggle.addEventListener('click', () => {
+    const isVisible = !chatbotWidget.classList.contains('hidden');
+    chatbotWidget.classList.toggle('hidden', isVisible);
+    chatbotToggle.setAttribute('aria-label', isVisible ? 'Open chat with AI assistant' : 'Close chat');
+    if (!isVisible) {
+      chatInput.focus();
+      gtag('event', 'chatbot_open', {});
+    } else {
+      gtag('event', 'chatbot_close', {});
+    }
+  });
 
   async function addMessage(text, isUser = false) {
     const messageDiv = document.createElement('div');
@@ -78,69 +68,56 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch('https://alphaclone-chatbot.onrender.com/api/chatbot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
+        body: JSON.stringify({ message: message })
       });
       if (!response.ok) throw new Error('Network error');
       const data = await response.json();
+      gtag('event', 'chatbot_message_sent', { 'message': message });
       return data.reply;
     } catch (error) {
-      console.error('Chatbot error:', error);
-      return 'Sorry, I’m having trouble connecting. Please try again later.';
+      console.error('Fetch error:', error);
+      // Fallback mock responses for testing
+      const mockResponses = {
+        'pricing': 'Our pricing plans include Starter ($97/mo), Professional ($297/mo), and Enterprise (custom). Check the pricing section for details!',
+        'features': 'AlphaClone offers voice & text clones, custom websites, and workflow automation. Want to know more about a specific feature?',
+        'how it works': 'We train an AI clone on your voice and style, embed it in a custom website, and automate workflows like lead capture and scheduling.',
+        'default': 'Thanks for your question! Can you provide more details or ask about our features, pricing, or use cases?'
+      };
+      const lowerMessage = message.toLowerCase();
+      const response = Object.keys(mockResponses).find(key => lowerMessage.includes(key))
+        ? mockResponses[Object.keys(mockResponses).find(key => lowerMessage.includes(key))]
+        : mockResponses.default;
+      return response;
     }
   }
 
   async function handleUserMessage() {
     const userMessage = chatInput.value.trim();
-    if (!userMessage) return;
-    addMessage(userMessage, true);
-    chatInput.value = '';
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'chat-message bot-message';
-    typingIndicator.id = 'typing-indicator';
-    typingIndicator.textContent = 'AlphaClone is typing...';
-    chatMessages.appendChild(typingIndicator);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    const botReply = await sendMessageToBackend(userMessage);
-    document.getElementById('typing-indicator')?.remove();
-    addMessage(botReply);
+    if (userMessage) {
+      addMessage(userMessage, true);
+      chatInput.value = '';
+      const typingIndicator = document.createElement('div');
+      typingIndicator.className = 'chat-message bot-message';
+      typingIndicator.textContent = 'AlphaClone is typing...';
+      typingIndicator.id = 'typing-indicator';
+      chatMessages.appendChild(typingIndicator);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      const botReply = await sendMessageToBackend(userMessage);
+      const indicator = document.getElementById('typing-indicator');
+      if (indicator) chatMessages.removeChild(indicator);
+      addMessage(botReply);
+    }
   }
 
-  if (sendChatBtn && chatInput) {
-    sendChatBtn.addEventListener('click', handleUserMessage);
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleUserMessage();
-    });
-  }
-
-  // Contact Form Submission
-  const contactForm = document.getElementById('contactForm');
-  const formMessage = document.getElementById('formMessage');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+  sendChatBtn.addEventListener('click', handleUserMessage);
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData);
-      try {
-        const response = await fetch('https://alphaclone-contact.onrender.com/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (!response.ok) throw new Error('Network error');
-        formMessage.textContent = 'Thank you! Your message has been sent successfully.';
-        formMessage.classList.add('success');
-        formMessage.classList.remove('error');
-        contactForm.reset();
-      } catch (error) {
-        console.error('Form submission error:', error);
-        formMessage.textContent = 'An error occurred. Please try again later.';
-        formMessage.classList.add('error');
-        formMessage.classList.remove('success');
-      }
-    });
-  }
+      handleUserMessage();
+    }
+  });
 
-  // Smooth Scrolling
+  // Smooth scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       e.preventDefault();
@@ -152,22 +129,50 @@ document.addEventListener('DOMContentLoaded', () => {
           top: targetElement.offsetTop - 100,
           behavior: 'smooth'
         });
+        gtag('event', 'scroll_to_section', { 'section': targetId });
       }
     });
   });
 
-  // Pricing Card Hover Effects
-  const pricingCards = document.querySelectorAll('.pricing-card');
-  pricingCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = card.classList.contains('featured')
-        ? 'scale(1.05) translateY(-5px)'
-        : 'translateY(-5px)';
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = card.classList.contains('featured')
-        ? 'scale(1.05)'
-        : 'translateY(0)';
+  // Form submission
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    fetch('https://formspree.io/f/mzzvpldl', {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        alert('Thank you for your message! Our team will get back to you shortly.');
+        contactForm.reset();
+        gtag('event', 'form_submission', { 'form_id': 'contactForm' });
+      } else {
+        alert('There was an error submitting the form. Please try again.');
+      }
+    }).catch(() => {
+      alert('There was an error submitting the form. Please try again.');
     });
   });
+
+  // Sticky CTA visibility
+  const stickyCta = document.querySelector('.sticky-cta');
+  const heroSection = document.querySelector('.hero');
+  const observer = new IntersectionObserver(([entry]) => {
+    stickyCta.classList.toggle('visible', !entry.isIntersecting);
+  }, { threshold: 0.1 });
+  observer.observe(heroSection);
+
+  // Progressive enhancement: Remove animations if user prefers reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('[style*="animation"]').forEach(el => {
+      el.style.animation = 'none';
+    });
+  }
 });
+
+// Google Analytics
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GTM-5W3LQ8LJ');
