@@ -21,379 +21,447 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Thank You Page Styles */
+    .thank-you-page {
+      display: none;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 60px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .thank-you-box {
+      background: white;
+      display: inline-block;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin-top: 100px;
+    }
+  </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Main Content -->
+  <div id="main-content-wrapper">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header>
-    <div class="container header-container">
-      <a href="/" class="logo">
-        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
-        </svg>
-        AlphaClone
-      </a>
-      <nav aria-label="Main navigation">
-        <ul id="main-menu">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#use-cases">Use Cases</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="mobile-menu-btn" aria-label="Open main menu" aria-expanded="false" aria-controls="main-menu">☰</button>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container">
-        <h1 id="hero-heading">Your AI-Powered Digital Twin, Working 24/7</h1>
-        <p>AlphaClone creates intelligent AI clones that mirror your voice and expertise, automating inquiries, sales, and support on custom websites and platforms.</p>
-        <div class="cta-buttons">
-          <a href="#contact" class="btn btn-primary">Launch Your Clone</a>
-          <a href="#features" class="btn btn-secondary">Explore Features</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="features" aria-labelledby="features-heading">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="features-heading">Advanced AI & Automation Solutions</h2>
-          <p>Scale your digital presence with cutting-edge AI technology tailored to your brand.</p>
-        </div>
-        <div class="features-grid">
-          <div class="feature-card">
-            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z" />
-            </svg>
-            <h3>Authentic Voice & Text Clones</h3>
-            <p>AI assistants trained on your unique voice, writing style, and expertise to engage customers authentically.</p>
-          </div>
-          <div class="feature-card">
-            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 0 1-.53 1.28h-9a.75.75 0 0 1-.53-1.28l.621-.622a2.25 2.25 0 0 0 .659-1.59V18h-3a3 3 0 0 1-3-3V5.25Zm1.5 0v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5Z" clip-rule="evenodd" />
-            </svg>
-            <h3>Custom-Built Websites</h3>
-            <p>Stunning, responsive websites integrated with your AI clone to engage visitors and convert leads seamlessly.</p>
-          </div>
-          <div class="feature-card">
-            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M4.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm6 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm6 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
-            </svg>
-            <h3>Intelligent Workflow Automation</h3>
-            <p>Streamline lead capture, scheduling, payments, and follow-ups across all your platforms with AI-driven automation.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" aria-labelledby="about-heading">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="about-heading">About AlphaClone</h2>
-          <p>Pioneering the future of digital presence with AI-driven solutions.</p>
-        </div>
-        <div class="about-meta-boxes">
-          <div class="meta-box">
-            <h3>Our Mission</h3>
-            <p>Empowering professionals, creators, and businesses with AI clones that authentically represent their brand, working tirelessly to drive growth.</p>
-          </div>
-          <div class="meta-box">
-            <h3>Cutting-Edge Technology</h3>
-            <p>Leveraging advanced voice cloning, NLP, and behavioral modeling to create digital twins that adapt to your unique communication style.</p>
-          </div>
-          <div class="meta-box">
-            <h3>Ethical Innovation</h3>
-            <p>Committed to transparency and user control, ensuring your AI clone operates with clear disclosure and full consent.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="use-cases" class="use-cases" aria-labelledby="use-cases-heading">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="use-cases-heading">Transformative Use Cases</h2>
-          <p>Discover how industry leaders leverage AlphaClone to scale their operations.</p>
-        </div>
-        <div class="tabs" role="tablist" aria-label="Use case categories">
-          <button class="tab-btn active" data-tab="consultants" role="tab" aria-selected="true" aria-controls="consultants-tab">Consultants</button>
-          <button class="tab-btn" data-tab="creators" role="tab" aria-selected="false" aria-controls="creators-tab">Creators</button>
-          <button class="tab-btn" data-tab="ecommerce" role="tab" aria-selected="false" aria-controls="ecommerce-tab">E-commerce</button>
-          <button class="tab-btn" data-tab="agencies" role="tab" aria-selected="false" aria-controls="agencies-tab">Agencies</button>
-        </div>
-        <div class="tab-content active" id="consultants" role="tabpanel" aria-labelledby="consultants-tab" tabindex="0">
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
-              <h3>Consulting Firm Triples Client Onboarding</h3>
-              <p>Executive Performance Group uses AI clones to manage initial consultations, freeing human consultants for high-value engagements.</p>
-              <div class="case-stats">
-                <div class="stat-item"><h4>3.2X</h4><p>Lead capture increase</p></div>
-                <div class="stat-item"><h4>64%</h4><p>Faster response times</p></div>
-                <div class="stat-item"><h4>28%</h4><p>Higher conversions</p></div>
-                <div class="stat-item"><h4>24/7</h4><p>Availability</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-content" id="creators" role="tabpanel" aria-labelledby="creators-tab" tabindex="0" hidden>
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
-              <h3>Influencer Monetizes Engagement</h3>
-              <p>Lifestyle influencer Sarah K. automates 87% of sponsorship inquiries with her AI clone, preserving her authentic voice.</p>
-              <div class="case-stats">
-                <div class="stat-item"><h4>5X</h4><p>More sponsorships</p></div>
-                <div class="stat-item"><h4>92%</h4><p>Faster fan responses</p></div>
-                <div class="stat-item"><h4>$12K</h4><p>Added monthly revenue</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-content" id="ecommerce" role="tabpanel" aria-labelledby="ecommerce-tab" tabindex="0" hidden>
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
-              <h3>E-commerce Cuts Support Costs</h3>
-              <p>EcoGoods uses AI clones to handle 73% of customer inquiries, maintaining a 4.9/5 satisfaction rating.</p>
-              <div class="case-stats">
-                <div class="stat-item"><h4>73%</h4><p>Inquiries automated</p></div>
-                <div class="stat-item"><h4>4.9/5</h4><p>Customer satisfaction</p></div>
-                <div class="stat-item"><h4>40%</h4><p>Upsell conversions</p></div>
-                <div class="stat-item"><h4>$0.15</h4><p>Cost per inquiry</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-content" id="agencies" role="tabpanel" aria-labelledby="agencies-tab" tabindex="0" hidden>
-          <div class="case-study">
-            <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
-            <div class="case-content">
-              <h3>Agency Scales Client Services</h3>
-              <p>GrowthHackers Inc. uses AI clones to triple client capacity without compromising service quality.</p>
-              <div class="case-stats">
-                <div class="stat-item"><h4>3X</h4><p>Client capacity</p></div>
-                <div class="stat-item"><h4>24/7</h4><p>Support availability</p></div>
-                <div class="stat-item"><h4>45%</h4><p>Faster onboarding</p></div>
-                <div class="stat-item"><h4>$250K</h4><p>Added annual revenue</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing" aria-labelledby="pricing-heading">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="pricing-heading">Flexible, Transparent Pricing</h2>
-          <p>Select the plan that aligns with your business goals.</p>
-        </div>
-        <div class="pricing-toggle">
-          <label for="pricing-period">Billing Period:</label>
-          <select id="pricing-period">
-            <option value="monthly">Monthly</option>
-            <option value="annual">Annual (Save 20%)</option>
-          </select>
-        </div>
-        <div class="pricing-grid">
-          <div class="pricing-card">
-            <h3>Starter</h3>
-            <div class="price"><span class="price-amount" data-monthly="$97" data-annual="$932">$97</span><span class="price-period">/month</span></div>
-            <ul class="pricing-features">
-              <li>Basic AI text clone</li>
-              <li>Pre-built website template</li>
-              <li>Up to 500 conversations/mo</li>
-              <li>Email support</li>
-              <li>Basic analytics</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary">Get Started</a>
-          </div>
-          <div class="pricing-card featured">
-            <div class="featured-badge">Most Popular</div>
-            <h3>Professional</h3>
-            <div class="price"><span class="price-amount" data-monthly="$297" data-annual="$2,851">$297</span><span class="price-period">/month</span></div>
-            <ul class="pricing-features">
-              <li>Advanced voice & text clone</li>
-              <li>Custom website design</li>
-              <li>Up to 2,000 conversations/mo</li>
-              <li>Priority support</li>
-              <li>Advanced analytics</li>
-              <li>Basic workflow automation</li>
-              <li>API access</li>
-            </ul>
-            <a href="#contact" class="btn btn-primary">Get Started</a>
-          </div>
-          <div class="pricing-card">
-            <h3>Enterprise</h3>
-            <div class="price">Custom</div>
-            <ul class="pricing-features">
-              <li>Multi-voice/text clones</li>
-              <li>Custom development</li>
-              <li>Unlimited conversations</li>
-              <li>24/7 dedicated support</li>
-              <li>Enterprise-grade security</li>
-              <li>Full automation suite</li>
-              <li>Team management</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary">Contact Sales</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonials" class="testimonials" aria-labelledby="testimonials-heading">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="testimonials-heading">Trusted by Industry Leaders</h2>
-          <p>Hear from professionals who’ve transformed their businesses with AlphaClone.</p>
-        </div>
-        <div class="testimonial-grid">
-          <div class="testimonial-card">
-            <div class="testimonial-text">
-              My AI clone manages all initial client consultations, freeing me to focus on premium services. It’s like having a business partner who thinks and communicates like me.
-            </div>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Portrait of Sarah J., Executive Coach" class="author-avatar">
-              <div class="author-info">
-                <h4>Sarah J.</h4>
-                <p>Executive Coach</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-text">
-              As a content creator, I was overwhelmed by DMs. My AI clone now handles lead qualification and negotiations, delivering a 10x ROI.
-            </div>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Portrait of Marcus T., Fitness Influencer" class="author-avatar">
-              <div class="author-info">
-                <h4>Marcus T.</h4>
-                <p>Fitness Influencer</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial-card">
-            <div class="testimonial-text">
-              AlphaClone revolutionized our consulting firm. Response times plummeted, and our team now focuses on high-value tasks, driving unprecedented growth.
-            </div>
-            <div class="testimonial-author">
-              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Portrait of Priya K., Consulting Firm Partner" class="author-avatar">
-              <div class="author-info">
-                <h4>Priya K.</h4>
-                <p>Consulting Firm Partner</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="section-title">
-          <h2 id="contact-heading">Launch Your Digital Twin Today</h2>
-          <p>Ready to scale your business with an AI clone? Let’s get started.</p>
-        </div>
-        <div class="contact-form">
-          <form id="contactForm" aria-labelledby="contact-heading">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" class="form-control" required aria-required="true" placeholder="Enter your full name">
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" class="form-control" required aria-required="true" placeholder="Enter your email">
-            </div>
-            <div class="form-group">
-              <label for="business">Business/Use Case</label>
-              <input type="text" id="business" class="form-control" required aria-required="true" placeholder="Describe your business or use case">
-            </div>
-            <div class="form-group">
-              <label for="message">How Can We Help?</label>
-              <textarea id="message" class="form-control" required aria-required="true" placeholder="Tell us about your needs"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-            <p class="form-message" id="formMessage" role="status"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h3>AlphaClone</h3>
-          <p>Empowering businesses with AI-powered digital twins that work tirelessly to drive growth.</p>
-          <div class="social-links">
-            <a href="https://twitter.com/alphaclone" aria-label="Follow AlphaClone on Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
-            <a href="https://linkedin.com/company/alphaclone" aria-label="Follow AlphaClone on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
-            <a href="https://instagram.com/alphaclone" aria-label="Follow AlphaClone on Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h3>Product</h3>
-          <ul class="footer-links">
+    <header>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+          </svg>
+          AlphaClone
+        </a>
+        <nav aria-label="Main navigation">
+          <ul id="main-menu">
             <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#use-cases">Use Cases</a></li>
-            <li><a href="/integrations">Integrations</a></li>
-            <li><a href="/updates">Updates</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="/docs">Documentation</a></li>
-            <li><a href="/guides">Guides</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/support">Support</a></li>
-            <li><a href="/api-status">API Status</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Company</h3>
-          <ul class="footer-links">
             <li><a href="#about">About</a></li>
-            <li><a href="/careers">Careers</a></li>
-            <li><a href="/privacy">Privacy</a></li>
-            <li><a href="/terms">Terms</a></li>
+            <li><a href="#use-cases">Use Cases</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+        </nav>
+        <button class="mobile-menu-btn" aria-label="Open main menu" aria-expanded="false" aria-controls="main-menu">☰</button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <h1 id="hero-heading">Your AI-Powered Digital Twin, Working 24/7</h1>
+          <p>AlphaClone creates intelligent AI clones that mirror your voice and expertise, automating inquiries, sales, and support on custom websites and platforms.</p>
+          <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Launch Your Clone</a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" aria-labelledby="features-heading">
+        <div class="container">
+          <div class="section-title">
+            <h2 id="features-heading">Advanced AI & Automation Solutions</h2>
+            <p>Scale your digital presence with cutting-edge AI technology tailored to your brand.</p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z" />
+              </svg>
+              <h3>Authentic Voice & Text Clones</h3>
+              <p>AI assistants trained on your unique voice, writing style, and expertise to engage customers authentically.</p>
+            </div>
+            <div class="feature-card">
+              <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 0 1-.53 1.28h-9a.75.75 0 0 1-.53-1.28l.621-.622a2.25 2.25 0 0 0 .659-1.59V18h-3a3 3 0 0 1-3-3V5.25Zm1.5 0v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5Z" clip-rule="evenodd" />
+              </svg>
+              <h3>Custom-Built Websites</h3>
+              <p>Stunning, responsive websites integrated with your AI clone to engage visitors and convert leads seamlessly.</p>
+            </div>
+            <div class="feature-card">
+              <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M4.5 12a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm6 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm6 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" />
+              </svg>
+              <h3>Intelligent Workflow Automation</h3>
+              <p>Streamline lead capture, scheduling, payments, and follow-ups across all your platforms with AI-driven automation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" aria-labelledby="about-heading">
+        <div class="container">
+          <div class="section-title">
+            <h2 id="about-heading">About AlphaClone</h2>
+            <p>Pioneering the future of digital presence with AI-driven solutions.</p>
+          </div>
+          <div class="about-meta-boxes">
+            <div class="meta-box">
+              <h3>Our Mission</h3>
+              <p>Empowering professionals, creators, and businesses with AI clones that authentically represent their brand, working tirelessly to drive growth.</p>
+            </div>
+            <div class="meta-box">
+              <h3>Cutting-Edge Technology</h3>
+              <p>Leveraging advanced voice cloning, NLP, and behavioral modeling to create digital twins that adapt to your unique communication style.</p>
+            </div>
+            <div class="meta-box">
+              <h3>Ethical Innovation</h3>
+              <p>Committed to transparency and user control, ensuring your AI clone operates with clear disclosure and full consent.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="use-cases" class="use-cases" aria-labelledby="use-cases-heading">
+        <div class="container">
+          <div class="section-title">
+            <h2 id="use-cases-heading">Transformative Use Cases</h2>
+            <p>Discover how industry leaders leverage AlphaClone to scale their operations.</p>
+          </div>
+          <div class="tabs" role="tablist" aria-label="Use case categories">
+            <button class="tab-btn active" data-tab="consultants" role="tab" aria-selected="true" aria-controls="consultants-tab">Consultants</button>
+            <button class="tab-btn" data-tab="creators" role="tab" aria-selected="false" aria-controls="creators-tab">Creators</button>
+            <button class="tab-btn" data-tab="ecommerce" role="tab" aria-selected="false" aria-controls="ecommerce-tab">E-commerce</button>
+            <button class="tab-btn" data-tab="agencies" role="tab" aria-selected="false" aria-controls="agencies-tab">Agencies</button>
+          </div>
+          <div class="tab-content active" id="consultants" role="tabpanel" aria-labelledby="consultants-tab" tabindex="0">
+            <div class="case-study">
+              <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
+              <div class="case-content">
+                <h3>Consulting Firm Triples Client Onboarding</h3>
+                <p>Executive Performance Group uses AI clones to manage initial consultations, freeing human consultants for high-value engagements.</p>
+                <div class="case-stats">
+                  <div class="stat-item"><h4>3.2X</h4><p>Lead capture increase</p></div>
+                  <div class="stat-item"><h4>64%</h4><p>Faster response times</p></div>
+                  <div class="stat-item"><h4>28%</h4><p>Higher conversions</p></div>
+                  <div class="stat-item"><h4>24/7</h4><p>Availability</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content" id="creators" role="tabpanel" aria-labelledby="creators-tab" tabindex="0" hidden>
+            <div class="case-study">
+              <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80');" aria-hidden="true"></div>
+              <div class="case-content">
+                <h3>Influencer Monetizes Engagement</h3>
+                <p>Lifestyle influencer Sarah K. automates 87% of sponsorship inquiries with her AI clone, preserving her authentic voice.</p>
+                <div class="case-stats">
+                  <div class="stat-item"><h4>5X</h4><p>More sponsorships</p></div>
+                  <div class="stat-item"><h4>92%</h4><p>Faster fan responses</p></div>
+                  <div class="stat-item"><h4>$12K</h4><p>Added monthly revenue</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content" id="ecommerce" role="tabpanel" aria-labelledby="ecommerce-tab" tabindex="0" hidden>
+            <div class="case-study">
+              <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
+              <div class="case-content">
+                <h3>E-commerce Cuts Support Costs</h3>
+                <p>EcoGoods uses AI clones to handle 73% of customer inquiries, maintaining a 4.9/5 satisfaction rating.</p>
+                <div class="case-stats">
+                  <div class="stat-item"><h4>73%</h4><p>Inquiries automated</p></div>
+                  <div class="stat-item"><h4>4.9/5</h4><p>Customer satisfaction</p></div>
+                  <div class="stat-item"><h4>40%</h4><p>Upsell conversions</p></div>
+                  <div class="stat-item"><h4>$0.15</h4><p>Cost per inquiry</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content" id="agencies" role="tabpanel" aria-labelledby="agencies-tab" tabindex="0" hidden>
+            <div class="case-study">
+              <div class="case-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');" aria-hidden="true"></div>
+              <div class="case-content">
+                <h3>Agency Scales Client Services</h3>
+                <p>GrowthHackers Inc. uses AI clones to triple client capacity without compromising service quality.</p>
+                <div class="case-stats">
+                  <div class="stat-item"><h4>3X</h4><p>Client capacity</p></div>
+                  <div class="stat-item"><h4>24/7</h4><p>Support availability</p></div>
+                  <div class="stat-item"><h4>45%</h4><p>Faster onboarding</p></div>
+                  <div class="stat-item"><h4>$250K</h4><p>Added annual revenue</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" aria-labelledby="pricing-heading">
+        <div class="container">
+          <div class="section-title">
+            <h2 id="pricing-heading">Flexible, Transparent Pricing</h2>
+            <p>Select the plan that aligns with your business goals.</p>
+          </div>
+          <div class="pricing-toggle">
+            <label for="pricing-period">Billing Period:</label>
+            <select id="pricing-period">
+              <option value="monthly">Monthly</option>
+              <option value="annual">Annual (Save 20%)</option>
+            </select>
+          </div>
+          <div class="pricing-grid">
+            <div class="pricing-card">
+              <h3>Starter</h3>
+              <div class="price"><span class="price-amount" data-monthly="$97" data-annual="$932">$97</span><span class="price-period">/month</span></div>
+              <ul class="pricing-features">
+                <li>Basic AI text clone</li>
+                <li>Pre-built website template</li>
+                <li>Up to 500 conversations/mo</li>
+                <li>Email support</li>
+                <li>Basic analytics</li>
+              </ul>
+              <a href="#contact" class="btn btn-secondary">Get Started</a>
+            </div>
+            <div class="pricing-card featured">
+              <div class="featured-badge">Most Popular</div>
+              <h3>Professional</h3>
+              <div class="price"><span class="price-amount" data-monthly="$297" data-annual="$2,851">$297</span><span class="price-period">/month</span></div>
+              <ul class="pricing-features">
+                <li>Advanced voice & text clone</li>
+                <li>Custom website design</li>
+                <li>Up to 2,000 conversations/mo</li>
+                <li>Priority support</li>
+                <li>Advanced analytics</li>
+                <li>Basic workflow automation</li>
+                <li>API access</li>
+              </ul>
+              <a href="#contact" class="btn btn-primary">Get Started</a>
+            </div>
+            <div class="pricing-card">
+              <h3>Enterprise</h3>
+              <div class="price">Custom</div>
+              <ul class="pricing-features">
+                <li>Multi-voice/text clones</li>
+                <li>Custom development</li>
+                <li>Unlimited conversations</li>
+                <li>24/7 dedicated support</li>
+                <li>Enterprise-grade security</li>
+                <li>Full automation suite</li>
+                <li>Team management</li>
+              </ul>
+              <a href="#contact" class="btn btn-secondary">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="testimonials" aria-labelledby="testimonials-heading">
+        <div class="container">
+          <div class="section-title">
+            <h2 id="testimonials-heading">Trusted by Industry Leaders</h2>
+            <p>Hear from professionals who've transformed their businesses with AlphaClone.</p>
+          </div>
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-text">
+                My AI clone manages all initial client consultations, freeing me to focus on premium services. It's like having a business partner who thinks and communicates like me.
+              </div>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Portrait of Sarah J., Executive Coach" class="author-avatar">
+                <div class="author-info">
+                  <h4>Sarah J.</h4>
+                  <p>Executive Coach</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-text">
+                As a content creator, I was overwhelmed by DMs. My AI clone now handles lead qualification and negotiations, delivering a 10x ROI.
+              </div>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Portrait of Marcus T., Fitness Influencer" class="author-avatar">
+                <div class="author-info">
+                  <h4>Marcus T.</h4>
+                  <p>Fitness Influencer</p>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-text">
+                AlphaClone revolutionized our consulting firm. Response times plummeted, and our team now focuses on high-value tasks, driving unprecedented growth.
+              </div>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Portrait of Priya K., Consulting Firm Partner" class="author-avatar">
+                <div class="author-info">
+                  <h4>Priya K.</h4>
+                  <p>Consulting Firm Partner</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <div class="section-title">
+            <h2 id="contact-heading">Launch Your Digital Twin Today</h2>
+            <p>Ready to scale your business with an AI clone? Let's get started.</p>
+          </div>
+          <div class="contact-form">
+            <form id="contactForm" aria-labelledby="contact-heading">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" class="form-control" required aria-required="true" placeholder="Enter your full name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" required aria-required="true" placeholder="Enter your email">
+              </div>
+              <div class="form-group">
+                <label for="business">Business/Use Case</label>
+                <input type="text" id="business" class="form-control" required aria-required="true" placeholder="Describe your business or use case">
+              </div>
+              <div class="form-group">
+                <label for="message">How Can We Help?</label>
+                <textarea id="message" class="form-control" required aria-required="true" placeholder="Tell us about your needs"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <p class="form-message" id="formMessage" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>AlphaClone</h3>
+            <p>Empowering businesses with AI-powered digital twins that work tirelessly to drive growth.</p>
+            <div class="social-links">
+              <a href="https://twitter.com/alphaclone" aria-label="Follow AlphaClone on Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
+              <a href="https://linkedin.com/company/alphaclone" aria-label="Follow AlphaClone on LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a>
+              <a href="https://instagram.com/alphaclone" aria-label="Follow AlphaClone on Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h3>Product</h3>
+            <ul class="footer-links">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#use-cases">Use Cases</a></li>
+              <li><a href="/integrations">Integrations</a></li>
+              <li><a href="/updates">Updates</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="/docs">Documentation</a></li>
+              <li><a href="/guides">Guides</a></li>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/support">Support</a></li>
+              <li><a href="/api-status">API Status</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <ul class="footer-links">
+              <li><a href="#about">About</a></li>
+              <li><a href="/careers">Careers</a></li>
+              <li><a href="/privacy">Privacy</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 AlphaClone. All rights reserved.</p>
         </div>
       </div>
-      <div class="copyright">
-        <p>&copy; 2025 AlphaClone. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <div class="chatbot-widget" id="chatbotWidget" style="display: none;" aria-label="AI assistant chat">
-    <div class="chatbot-header">
-      Your AlphaClone Assistant
-    </div>
-    <div class="chatbot-messages" id="chatMessages">
-      <div class="chat-message bot-message">
-        Welcome! I'm your AI assistant. Ask me anything about AlphaClone’s AI digital twins and automation solutions.
+    <div class="chatbot-widget" id="chatbotWidget" style="display: none;" aria-label="AI assistant chat">
+      <div class="chatbot-header">
+        Your AlphaClone Assistant
+      </div>
+      <div class="chatbot-messages" id="chatMessages">
+        <div class="chat-message bot-message">
+          Welcome! I'm your AI assistant. Ask me anything about AlphaClone's AI digital twins and automation solutions.
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatInput" placeholder="Ask a question..." aria-label="Type your question">
+        <button id="sendChatBtn">Send</button>
       </div>
     </div>
-    <div class="chatbot-input-area">
-      <input type="text" id="chatInput" placeholder="Ask a question..." aria-label="Type your question">
-      <button id="sendChatBtn">Send</button>
+    <button class="chatbot-toggle-btn" id="chatbotToggle" aria-label="Open chat with AI assistant">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      AI Assistant
+    </button>
+  </div>
+
+  <!-- Thank You Page (hidden by default) -->
+  <div id="thankYouPage" class="thank-you-page">
+    <div class="thank-you-box">
+      <h1>✅ Thank You!</h1>
+      <p>Your message has been sent. We'll get back to you soon.</p>
+      <button id="returnToMain" class="btn btn-primary" style="margin-top: 20px;">Return to Site</button>
     </div>
   </div>
-  <button class="chatbot-toggle-btn" id="chatbotToggle" aria-label="Open chat with AI assistant">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-    AI Assistant
-  </button>
 
   <script src="script.js"></script>
+  <script>
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // In a real implementation, you would send the form data to a server here
+      // For this example, we'll just show the thank you page
+      
+      // Hide main content
+      document.getElementById('main-content-wrapper').style.display = 'none';
+      
+      // Show thank you page
+      document.getElementById('thankYouPage').style.display = 'block';
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    });
+    
+    // Return to main button handler
+    document.getElementById('returnToMain').addEventListener('click', function() {
+      // Show main content
+      document.getElementById('main-content-wrapper').style.display = 'block';
+      
+      // Hide thank you page
+      document.getElementById('thankYouPage').style.display = 'none';
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    });
+  </script>
 </body>
 </html>
